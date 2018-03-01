@@ -1,4 +1,4 @@
-{% set version = "2.2.2" %}
+{% set version = "2.3.2" %}
 {% set name = "fflas-ffpack" %}
 {% set variant = "openblas" %}
 
@@ -9,7 +9,7 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/linbox-team/fflas-ffpack/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 19b14dbeac02fc10eb28352e874ef6391dafc6901da4c5e360d5c0959f63ff7b
+  sha256: c0c7426a983d961d75c61638be9406a74415b429251e5d4295ee1110d1ee0e69
   patches:
     # https://github.com/linbox-team/fflas-ffpack/commit/346498a71b2759f5913ba8c4c2fe025bbf8b3faa
     - patches/ticket-21578.patch
@@ -17,7 +17,7 @@ source:
     - patches/skip-test-ftrsm.patch
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
   features:
     - blas_{{ variant }}

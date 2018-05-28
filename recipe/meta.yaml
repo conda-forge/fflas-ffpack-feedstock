@@ -14,28 +14,31 @@ source:
   - patches/dont-sort-cxxflags.patch
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   features:
     - blas_{{ variant }}
+  run_exports:
+    - {{ pin_subpackage('fflas-ffpack') }}
 
 requirements:
   build:
-    - toolchain
+    - {{ compiler('cxx') }}
     - libtool
     - pkg-config
-    - givaro >=4.0.3,<5
-    - gsl
-    - gmp 6.1.*
-    - blas 1.1 {{ variant }}
-    - openblas 0.2.20|0.2.20.*
     - automake
-  run:
-    - givaro >=4.0.3,<5
+  host:
+    - givaro
     - gsl
-    - gmp >=6.1,<7
+    - gmp
     - blas 1.1 {{ variant }}
-    - openblas 0.2.20|0.2.20.*
+    - openblas
+  run:
+    - givaro
+    - gsl
+    - gmp
+    - blas 1.1 {{ variant }}
+    - openblas
 
 test:
   commands:

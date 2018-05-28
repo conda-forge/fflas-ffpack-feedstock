@@ -14,14 +14,16 @@ Summary: Finite Field Linear Algebra Subroutines / Package
 Current build status
 ====================
 
-Linux: [![Circle CI](https://circleci.com/gh/conda-forge/fflas-ffpack-feedstock.svg?style=shield)](https://circleci.com/gh/conda-forge/fflas-ffpack-feedstock)
-OSX: [![TravisCI](https://travis-ci.org/conda-forge/fflas-ffpack-feedstock.svg?branch=master)](https://travis-ci.org/conda-forge/fflas-ffpack-feedstock)
-Windows: ![](https://cdn.rawgit.com/conda-forge/conda-smithy/90845bba35bec53edac7a16638aa4d77217a3713/conda_smithy/static/disabled.svg)
+[![Linux](https://img.shields.io/circleci/project/github/conda-forge/fflas-ffpack-feedstock/master.svg?label=Linux)](https://circleci.com/gh/conda-forge/fflas-ffpack-feedstock)
+[![OSX](https://img.shields.io/travis/conda-forge/fflas-ffpack-feedstock/master.svg?label=macOS)](https://travis-ci.org/conda-forge/fflas-ffpack-feedstock)
+![Windows disabled](https://img.shields.io/badge/Windows-disabled-lightgrey.svg)
 
 Current release info
 ====================
-Version: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/fflas-ffpack/badges/version.svg)](https://anaconda.org/conda-forge/fflas-ffpack)
-Downloads: [![Anaconda-Server Badge](https://anaconda.org/conda-forge/fflas-ffpack/badges/downloads.svg)](https://anaconda.org/conda-forge/fflas-ffpack)
+
+| Name | Downloads | Version | Platforms |
+| --- | --- | --- | --- |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-fflas--ffpack-green.svg)](https://anaconda.org/conda-forge/fflas-ffpack) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/fflas-ffpack.svg)](https://anaconda.org/conda-forge/fflas-ffpack) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/fflas-ffpack.svg)](https://anaconda.org/conda-forge/fflas-ffpack) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/fflas-ffpack.svg)](https://anaconda.org/conda-forge/fflas-ffpack) |
 
 Installing fflas-ffpack
 =======================

@@ -14,7 +14,6 @@ chmod +x configure
     --libdir="$PREFIX/lib" \
     --with-default="$PREFIX" \
     --with-blas-libs="-lopenblas" \
-    --enable-optimization \
     --enable-precompilation \
     --disable-openmp \
     --enable-sse \

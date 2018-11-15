@@ -2,10 +2,7 @@
 
 autoreconf -fi
 
-
-if [ "$(uname)" == "Linux" ]; then
-   export LDFLAGS="$LDFLAGS -Wl,-rpath-link,${PREFIX}/lib"
-fi
+export LDFLAGS=$(echo "${LDFLAGS}" | sed "s/-Wl,--as-needed//g")
 
 chmod +x configure
 # Enable only SSE/SSE2 as these are supported on all 64bit CPUs

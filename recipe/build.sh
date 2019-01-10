@@ -4,6 +4,7 @@ autoreconf -fi
 
 # Disable link time optimizations as it results in symbols being dropped in libffpack.so
 export LDFLAGS=$(echo "${LDFLAGS}" | sed "s/-Wl,-O2//g")
+export LDFLAGS=$(echo "${LDFLAGS}" | sed "s/-Wl,--as-needed//g")
 
 chmod +x configure
 # Enable only SSE/SSE2 as these are supported on all 64bit CPUs

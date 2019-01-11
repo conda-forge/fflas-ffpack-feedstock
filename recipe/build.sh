@@ -1,11 +1,13 @@
 #!/bin/bash
 
-autoreconf -fi
-
 # Disable link time optimizations as it results in symbols being dropped in libffpack.so
 export LDFLAGS=$(echo "${LDFLAGS}" | sed "s/-Wl,-O2//g")
 export LDFLAGS=$(echo "${LDFLAGS}" | sed "s/-Wl,--as-needed//g")
-export CXXFLAGS=$(echo "${CXXFLAGS}" | sed "s/-std=c++17/-std=c++11/g")
+export CXXFLAGS=$(echo "${CXXFLAGS}" | sed "s/-std=c++17/-std=gnu++11/g")
+
+export PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig"
+
+autoreconf -vif
 
 chmod +x configure
 # Enable only SSE/SSE2 as these are supported on all 64bit CPUs
@@ -15,7 +17,6 @@ chmod +x configure
     --libdir="$PREFIX/lib" \
     --with-default="$PREFIX" \
     --with-blas-libs="-lopenblas" \
-    --enable-precompilation \
     --disable-openmp \
     --enable-sse \
     --enable-sse2 \

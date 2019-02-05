@@ -18,8 +18,8 @@ chmod +x configure
     --libdir="$PREFIX/lib" \
     --with-default="$PREFIX" \
     --with-blas-libs="-lopenblas" \
-    --enabled-optimization \
-    --enabled-precompilation \
+    --enable-optimization \
+    --enable-precompilation \
     --disable-openmp \
     --enable-sse \
     --enable-sse2 \

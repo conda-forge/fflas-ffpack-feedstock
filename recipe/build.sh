@@ -3,7 +3,8 @@
 # Disable link time optimizations as it results in symbols being dropped in libffpack.so
 export LDFLAGS=$(echo "${LDFLAGS}" | sed "s/-Wl,-O2//g")
 export LDFLAGS=$(echo "${LDFLAGS}" | sed "s/-Wl,--as-needed//g")
-export CXXFLAGS=$(echo "${CXXFLAGS}" | sed "s/-std=c++17/-std=gnu++11/g")
+export CFLAGS="-g $CFLAGS"
+export CXXFLAGS="-g $(echo "${CXXFLAGS}" | sed "s/-std=c++17/-std=gnu++11/g")"
 
 export PKG_CONFIG_PATH="$PREFIX/lib/pkgconfig"
 
@@ -17,6 +18,8 @@ chmod +x configure
     --libdir="$PREFIX/lib" \
     --with-default="$PREFIX" \
     --with-blas-libs="-lopenblas" \
+    --enabled-optimization \
+    --enabled-precompilation \
     --disable-openmp \
     --enable-sse \
     --enable-sse2 \

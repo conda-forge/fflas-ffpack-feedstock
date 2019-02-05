@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Disable link time optimizations as it results in symbols being dropped in libffpack.so
-export LDFLAGS=$(echo "${LDFLAGS}" | sed "s/-Wl,-O2//g")
+export LDFLAGS=$(echo "${LDFLAGS}" | sed "s/-Wl,-O2/-Wl,-O1/g")
 export LDFLAGS=$(echo "${LDFLAGS}" | sed "s/-Wl,--as-needed//g")
 export CFLAGS="-g $CFLAGS"
 export CXXFLAGS="-g $(echo "${CXXFLAGS}" | sed "s/-std=c++17/-std=gnu++11/g")"

@@ -13,7 +13,7 @@ chmod +x configure
     --prefix="$PREFIX" \
     --libdir="$PREFIX/lib" \
     --with-default="$PREFIX" \
-    --with-blas-libs="-lopenblas" \
+    --with-blas-libs="-lblas" \
     --enable-optimization \
     --enable-precompilation \
     --disable-openmp \

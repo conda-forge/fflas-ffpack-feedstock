@@ -25,6 +25,7 @@ requirements:
     - libtool
     - pkg-config
     - automake
+    - autoconf
   host:
     - libblas
     - libcblas

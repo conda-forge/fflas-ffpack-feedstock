@@ -28,7 +28,7 @@ requirements:
     - autoconf
   host:
     - libblas
-    - libcblas
+    - liblapack
     - givaro
     - gsl
     - gmp

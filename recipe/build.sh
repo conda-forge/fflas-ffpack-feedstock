@@ -9,7 +9,7 @@ chmod +x configure
     --prefix="$PREFIX" \
     --libdir="$PREFIX/lib" \
     --with-default="$PREFIX" \
-    --with-blas-libs="-lblas" \
+    --with-blas-libs="-llapack -lblas" \
     --enable-optimization \
     --enable-precompilation \
     --disable-openmp \

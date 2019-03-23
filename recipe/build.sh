@@ -2,6 +2,9 @@
 
 autoreconf -i
 
+unset CFLAGS
+unset CXXFLAGS
+
 chmod +x configure
 # Enable only SSE/SSE2 as these are supported on all 64bit CPUs
 # https://unix.stackexchange.com/a/249384

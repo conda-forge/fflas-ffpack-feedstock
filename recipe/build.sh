@@ -25,10 +25,5 @@ chmod +x configure
     --disable-fma4
 
 make -j${CPU_COUNT}
-
-if [ "$(uname)" != "Darwin" ]
-then
-    # appleclang crashes when following is run
-    make check -j${CPU_COUNT}
-fi
+make check -j${CPU_COUNT}
 make install

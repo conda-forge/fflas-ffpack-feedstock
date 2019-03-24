@@ -32,5 +32,5 @@ chmod +x configure
     --disable-fma4
 
 make -j${CPU_COUNT}
-make check -j${CPU_COUNT}
 make install
+make check -j${CPU_COUNT}

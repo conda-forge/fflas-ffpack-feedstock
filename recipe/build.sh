@@ -1,10 +1,13 @@
 #!/bin/bash
 
-export CPPFLAGS="-I$PREFIX/include $CPPFLAGS"
-export LDFLAGS="-L$PREFIX/lib $LDFLAGS"
-export LD_LIBRARY_PATH="$PREFIX/lib:$LD_LIBRARY_PATH"
-export CFLAGS="-g $CFLAGS"
-export CXXFLAGS="-g $CXXFLAGS"
+autoreconf -i
+
+unset CFLAGS
+unset CXXFLAGS
+
+if [[ $(uname) == "Linux" ]]; then
+    export LDFLAGS="$LDFLAGS -Wl,-rpath-link,$PREFIX/lib"
+fi
 
 chmod +x configure
 # Enable only SSE/SSE2 as these are supported on all 64bit CPUs
@@ -13,7 +16,7 @@ chmod +x configure
     --prefix="$PREFIX" \
     --libdir="$PREFIX/lib" \
     --with-default="$PREFIX" \
-    --with-blas-libs="-lopenblas" \
+    --with-blas-libs="-llapack -lblas" \
     --enable-optimization \
     --enable-precompilation \
     --disable-openmp \
@@ -29,10 +32,5 @@ chmod +x configure
     --disable-fma4
 
 make -j${CPU_COUNT}
-
-if [ "$(uname)" != "Darwin" ]
-then
-    # appleclang crashes when following is run
-    make check -j${CPU_COUNT}
-fi
 make install
+make check -j${CPU_COUNT}

@@ -1,6 +1,5 @@
 {% set version = "2.3.2" %}
 {% set name = "fflas-ffpack" %}
-{% set variant = "openblas" %}
 
 package:
   name: {{ name }}
@@ -14,10 +13,9 @@ source:
   - patches/dont-sort-cxxflags.patch
 
 build:
-  number: 1
+  number: 2
   skip: true  # [win]
   features:
-    - blas_{{ variant }}
   run_exports:
     - {{ pin_subpackage('fflas-ffpack') }}
 
@@ -27,18 +25,17 @@ requirements:
     - libtool
     - pkg-config
     - automake
+    - autoconf
   host:
+    - libblas
+    - liblapack
     - givaro
     - gsl
     - gmp
-    - blas 1.1 {{ variant }}
-    - openblas
   run:
     - givaro
     - gsl
     - gmp
-    - blas 1.1 {{ variant }}
-    - openblas
 
 test:
   commands:

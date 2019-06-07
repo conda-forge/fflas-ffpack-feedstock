@@ -1,4 +1,4 @@
-{% set version = "2.3.2" %}
+{% set version = "2.4.1" %}
 {% set name = "fflas-ffpack" %}
 
 package:
@@ -8,12 +8,12 @@ package:
 source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/linbox-team/fflas-ffpack/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: c0c7426a983d961d75c61638be9406a74415b429251e5d4295ee1110d1ee0e69
+  sha256: 5c5a214ca060dab0002382aef76acf5408f406aa67cbcb65139958f0aee36622
   patches:
   - patches/dont-sort-cxxflags.patch
 
 build:
-  number: 2
+  number: 0
   skip: true  # [win]
   features:
   run_exports:

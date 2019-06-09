@@ -33,4 +33,4 @@ chmod +x configure
 
 make -j${CPU_COUNT}
 make install
-make check -j${CPU_COUNT}
+make check -j${CPU_COUNT} || (cat testsuite.log && exit 1)

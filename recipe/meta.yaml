@@ -9,8 +9,6 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/linbox-team/fflas-ffpack/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: c258907bb5a52c8543cd33024fda70eb4274c15f44cd68eec4ccc218b9155e54
-  patches:
-  - patches/dont-sort-cxxflags.patch
 
 build:
   number: 0

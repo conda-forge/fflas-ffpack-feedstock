@@ -6,7 +6,7 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/linbox-team/fflas-ffpack/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
+  url: https://github.com/linbox-team/fflas-ffpack/releases/download/{{ version }}/{{ name }}-{{ version }}.tar.gz
   sha256: f372783a17a9899ee9f88d4c9421d80facccb95556146dad7020d07a03791cc9
 
 build:

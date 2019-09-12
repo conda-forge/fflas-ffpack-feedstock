@@ -1,4 +1,4 @@
-{% set version = "2.4.2" %}
+{% set version = "2.4.3" %}
 {% set name = "fflas-ffpack" %}
 
 package:
@@ -6,12 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
   url: https://github.com/linbox-team/fflas-ffpack/releases/download/v{{ version }}/{{ name }}-{{ version }}.tar.gz
-  sha256: 0b470fc986ee3041bd757e1b2e8808732cc547ba37196a97ab32b746af618daa
+  sha256: f372783a17a9899ee9f88d4c9421d80facccb95556146dad7020d07a03791cc9
 
 build:
-  number: 1
+  number: 0
   skip: true  # [win]
   features:
   run_exports:

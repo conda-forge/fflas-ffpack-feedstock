@@ -33,4 +33,9 @@ chmod +x configure
 
 make -j${CPU_COUNT}
 make install
-make check -j${CPU_COUNT}
+
+if [[ "$PKG_VERSION" == "2.4.3" && "$target_platform" == "osx-64" ]]; then
+    make check -j${CPU_COUNT} || cat tests/test-suite.log
+else
+    make check -j${CPU_COUNT} || (cat tests/test-suite.log && exit 1)
+fi

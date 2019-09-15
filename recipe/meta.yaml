@@ -10,7 +10,7 @@ source:
   sha256: f372783a17a9899ee9f88d4c9421d80facccb95556146dad7020d07a03791cc9
 
 build:
-  number: 0
+  number: 1
   skip: true  # [win]
   run_exports:
     - {{ pin_subpackage('fflas-ffpack') }}

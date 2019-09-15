@@ -29,7 +29,10 @@ chmod +x configure
     --disable-avx \
     --disable-avx2 \
     --disable-fma \
-    --disable-fma4
+    --disable-fma4 \
+    --disable-avx512f \
+    --disable-avx512dq \
+    --disable-avx512vl
 
 make -j${CPU_COUNT}
 make install

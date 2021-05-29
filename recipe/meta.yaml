@@ -25,6 +25,7 @@ requirements:
     - make
   host:
     - libblas
+    - libcblas
     - liblapack
     - givaro
     - gmp

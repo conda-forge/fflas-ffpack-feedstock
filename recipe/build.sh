@@ -1,6 +1,7 @@
 #!/bin/bash
 
 echo "AC_DEFUN([INSTR_SET], [])" > macros/instr_set.m4
+sed -i.bak "s/AC_COMPILER_NAME//g" macros/debug.m4
 
 autoreconf -if
 
@@ -8,10 +9,8 @@ unset CFLAGS
 unset CXXFLAGS
 
 if [[ "$cxx_compiler" == "clangxx" ]]; then
-    export am_cv_CXX_dependencies_compiler_type=clang
     export CCNAM=clang
-elif [[ "$cxx_compiler" == "clangxx" ]]; then
-    export am_cv_CXX_dependencies_compiler_type=gcc
+elif [[ "$cxx_compiler" == "gxx" ]]; then
     export CCNAM=gcc
 fi
 

@@ -21,7 +21,7 @@ chmod +x configure
     --prefix="$PREFIX" \
     --libdir="$PREFIX/lib" \
     --with-default="$PREFIX" \
-    --with-blas-libs="-llapack -lblas" \
+    --with-blas-libs="-llapack -lcblas -lblas" \
     --enable-optimization \
     --enable-precompilation \
     --disable-openmp \

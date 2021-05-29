@@ -1,13 +1,9 @@
 #!/bin/bash
 
-autoreconf -i
+autoreconf -if
 
 unset CFLAGS
 unset CXXFLAGS
-
-if [[ $(uname) == "Linux" ]]; then
-    export LDFLAGS="$LDFLAGS -Wl,-rpath-link,$PREFIX/lib"
-fi
 
 chmod +x configure
 # Enable only SSE/SSE2 as these are supported on all 64bit CPUs

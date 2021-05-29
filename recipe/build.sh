@@ -1,7 +1,7 @@
 #!/bin/bash
 
 echo "AC_DEFUN([INSTR_SET], [])" > macros/instr_set.m4
-sed -i.bak "s/AC_COMPILER_NAME//g" macros/debug.m4
+sed -i.bak "s/AC_COMPILER_NAME//g" configure.ac
 
 autoreconf -if
 

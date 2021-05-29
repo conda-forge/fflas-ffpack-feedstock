@@ -1,9 +1,19 @@
 #!/bin/bash
 
+echo "AC_DEFUN([INSTR_SET], [])" > macros/instr_set.m4
+
 autoreconf -if
 
 unset CFLAGS
 unset CXXFLAGS
+
+if [[ "$cxx_compiler" == "clangxx" ]]; then
+    export am_cv_CXX_dependencies_compiler_type=clang
+    export CCNAM=clang
+elif [[ "$cxx_compiler" == "clangxx" ]]; then
+    export am_cv_CXX_dependencies_compiler_type=gcc
+    export CCNAM=gcc
+fi
 
 chmod +x configure
 # Enable only SSE/SSE2 as these are supported on all 64bit CPUs

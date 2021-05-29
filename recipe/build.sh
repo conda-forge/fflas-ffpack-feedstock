@@ -42,10 +42,10 @@ chmod +x configure
 make -j${CPU_COUNT}
 make install
 
-if [[ "$PKG_VERSION" == "2.4.3" && "$target_platform" == "osx-64" ]]; then
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
+if [[ "$PKG_VERSION" == "2.4.3" && "$target_platform" == "osx-64" ]]; then
     make check -j${CPU_COUNT} || cat tests/test-suite.log
-fi
 else
     make check -j${CPU_COUNT} || (cat tests/test-suite.log && exit 1)
+fi
 fi

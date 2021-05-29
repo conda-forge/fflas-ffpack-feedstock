@@ -1,12 +1,17 @@
 #!/bin/bash
 
-autoreconf -i
+echo "AC_DEFUN([INSTR_SET], [])" > macros/instr_set.m4
+sed -i.bak "s/AC_COMPILER_NAME//g" configure.ac
+
+autoreconf -if
 
 unset CFLAGS
 unset CXXFLAGS
 
-if [[ $(uname) == "Linux" ]]; then
-    export LDFLAGS="$LDFLAGS -Wl,-rpath-link,$PREFIX/lib"
+if [[ "$cxx_compiler" == "clangxx" ]]; then
+    export CCNAM=clang
+elif [[ "$cxx_compiler" == "gxx" ]]; then
+    export CCNAM=gcc
 fi
 
 chmod +x configure
@@ -16,7 +21,7 @@ chmod +x configure
     --prefix="$PREFIX" \
     --libdir="$PREFIX/lib" \
     --with-default="$PREFIX" \
-    --with-blas-libs="-llapack -lblas" \
+    --with-blas-libs="-llapack -lcblas -lblas" \
     --enable-optimization \
     --enable-precompilation \
     --disable-openmp \
@@ -37,8 +42,10 @@ chmod +x configure
 make -j${CPU_COUNT}
 make install
 
+if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
 if [[ "$PKG_VERSION" == "2.4.3" && "$target_platform" == "osx-64" ]]; then
     make check -j${CPU_COUNT} || cat tests/test-suite.log
 else
     make check -j${CPU_COUNT} || (cat tests/test-suite.log && exit 1)
+fi
 fi

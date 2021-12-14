@@ -18,6 +18,8 @@ gmp:
 - '6'
 libblas:
 - 3.8 *netlib
+libcblas:
+- 3.8 *netlib
 liblapack:
 - 3.8 *netlib
 pin_run_as_build:

@@ -1,7 +1,7 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
 channel_sources:
-- conda-forge,defaults
+- conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -11,6 +11,8 @@ cxx_compiler_version:
 gmp:
 - '6'
 libblas:
+- 3.8 *netlib
+libcblas:
 - 3.8 *netlib
 liblapack:
 - 3.8 *netlib

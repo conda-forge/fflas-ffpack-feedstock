@@ -41,7 +41,9 @@ test:
 about:
   home: http://linbox-team.github.io/fflas-ffpack/
   license: LGPL-2.1-or-later
-  license_file: COPYING.LESSER
+  license_file:
+    - COPYING
+    - COPYING.LESSER
   summary: Finite Field Linear Algebra Subroutines / Package
   dev_url: https://github.com/linbox-team/fflas-ffpack
 

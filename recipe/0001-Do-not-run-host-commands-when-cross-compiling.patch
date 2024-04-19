@@ -1,0 +1,48 @@
+From dcafa2578ef5c757d785b9f184e5a9644d2cfda3 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
+Date: Fri, 19 Apr 2024 20:18:15 +0300
+Subject: [PATCH] Do not run host commands when cross-compiling
+
+---
+ configure.ac | 21 ---------------------
+ 1 file changed, 21 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 5390bcf..35e68d6 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -66,31 +66,10 @@ AC_PROG_SED
+ AS_BOX([       START FFLAS-FFPACK CONFIG       ])
+ #################################################
+ 
+-AC_COMPILER_NAME
+-
+-# We need a C++11 compiler now - AB 2014-12-12
+-# clang-3.8 does not support __float128 without explicitly passing it -std=c++11
+-AS_IF([test "x${CCNAM}" = "xclang38"],
+-      [AX_CXX_COMPILE_STDCXX_11([noext],[mandatory])],
+-      [AX_CXX_COMPILE_STDCXX_11([ext],[mandatory])]
+-      )
+ REQUIRED_FLAGS="${CXX11FLAGS}"
+ # Add the c++11 flags for the configure compilations as clang needs it to work properly with a glibc++ compiled with gcc
+ CXXFLAGS="${CXX11FLAGS} ${CXXFLAGS}"
+ 
+-AS_ECHO([---------------------------------------])
+-
+-# Set OPTIM_FLAGS, DEBUG_FLAGS depending on compiler and command line arguments
+-SET_FLAGS
+-
+-# Append -march=native or -mcpu=native (if recognized by the compiler) to
+-# OPTIM_FLAGS if not present in CXXFLAGS and not cross-compiling and
+-# --without-archnative is not set
+-ARCH_FLAGS
+-
+-# Append -mfpmath=sse to OPTIM_FLAGS on i386 and i686 architecture with SSE
+-FPMATH_FLAGS
+-
+ AS_ECHO([---------------------------------------])
+ # Machine characteristics
+ 
+-- 
+2.44.0
+

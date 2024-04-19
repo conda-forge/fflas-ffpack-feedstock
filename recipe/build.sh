@@ -25,6 +25,7 @@ chmod +x configure
     --enable-optimization \
     --enable-precompilation \
     --disable-openmp \
+    --disable-doc \
     --enable-sse \
     --enable-sse2 \
     --disable-sse3 \

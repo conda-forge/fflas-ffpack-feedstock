@@ -1,17 +1,17 @@
-From dcafa2578ef5c757d785b9f184e5a9644d2cfda3 Mon Sep 17 00:00:00 2001
+From e84b5fe6ed51a9e7f5d45255a7d30c50dca96282 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
 Date: Fri, 19 Apr 2024 20:18:15 +0300
 Subject: [PATCH] Do not run host commands when cross-compiling
 
 ---
- configure.ac | 21 ---------------------
- 1 file changed, 21 deletions(-)
+ configure.ac | 23 ++---------------------
+ 1 file changed, 2 insertions(+), 21 deletions(-)
 
 diff --git a/configure.ac b/configure.ac
-index 5390bcf..35e68d6 100644
+index 5390bcf..dfd6103 100644
 --- a/configure.ac
 +++ b/configure.ac
-@@ -66,31 +66,10 @@ AC_PROG_SED
+@@ -66,31 +66,12 @@ AC_PROG_SED
  AS_BOX([       START FFLAS-FFPACK CONFIG       ])
  #################################################
  
@@ -23,6 +23,8 @@ index 5390bcf..35e68d6 100644
 -      [AX_CXX_COMPILE_STDCXX_11([noext],[mandatory])],
 -      [AX_CXX_COMPILE_STDCXX_11([ext],[mandatory])]
 -      )
++AX_CXX_COMPILE_STDCXX_11([ext],[mandatory])
++
  REQUIRED_FLAGS="${CXX11FLAGS}"
  # Add the c++11 flags for the configure compilations as clang needs it to work properly with a glibc++ compiled with gcc
  CXXFLAGS="${CXX11FLAGS} ${CXXFLAGS}"

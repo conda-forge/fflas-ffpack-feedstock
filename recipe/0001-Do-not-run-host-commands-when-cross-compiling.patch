@@ -1,7 +1,7 @@
 From e84b5fe6ed51a9e7f5d45255a7d30c50dca96282 Mon Sep 17 00:00:00 2001
 From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
 Date: Fri, 19 Apr 2024 20:18:15 +0300
-Subject: [PATCH] Do not run host commands when cross-compiling
+Subject: [PATCH 1/2] Do not run host commands when cross-compiling
 
 ---
  configure.ac | 23 ++---------------------

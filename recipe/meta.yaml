@@ -29,9 +29,6 @@ requirements:
     - liblapack
     - givaro
     - gmp
-  run:
-    - givaro
-    - gmp
 
 test:
   commands:

@@ -1,0 +1,25 @@
+From 07f0de1270dade9aea644e8d6cbd7ded9a4adba0 Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
+Date: Fri, 19 Apr 2024 22:14:03 +0300
+Subject: [PATCH 2/2] Disable storage-transpose tests on macOS
+
+see https://github.com/linbox-team/fflas-ffpack/issues/395
+---
+ tests/Makefile.am | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index e06a4be..4a449d7 100755
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -75,7 +75,6 @@ BASIC_TESTS =               \
+ 		test-simd \
+ 		test-fgemv \
+ 		test-nullspace \
+-		test-storage-transpose	\
+ 		regression-check
+ 
+ if FFLASFFPACK_PRECOMPILED
+-- 
+2.44.0
+

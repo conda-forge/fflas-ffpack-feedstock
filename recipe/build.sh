@@ -37,7 +37,7 @@ chmod +x configure
     --disable-fma4 \
     --disable-avx512f \
     --disable-avx512dq \
-    --disable-avx512vl
+    --disable-avx512vl || (cat config.log; false)
 
 make -j${CPU_COUNT}
 make install

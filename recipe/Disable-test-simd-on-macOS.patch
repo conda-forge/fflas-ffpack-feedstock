@@ -1,0 +1,25 @@
+From 236186bb7f20a5095322a07334be9986c1fbd4fc Mon Sep 17 00:00:00 2001
+From: =?UTF-8?q?Julian=20R=C3=BCth?= <julian.rueth@fsfe.org>
+Date: Fri, 2 May 2025 19:57:27 +0300
+Subject: [PATCH] Disable test-simd on macOS
+
+since it requires AVX that we do not want to provide.
+---
+ tests/Makefile.am | 1 -
+ 1 file changed, 1 deletion(-)
+
+diff --git a/tests/Makefile.am b/tests/Makefile.am
+index 4a449d7..3c42b89 100755
+--- a/tests/Makefile.am
++++ b/tests/Makefile.am
+@@ -72,7 +72,6 @@ BASIC_TESTS =               \
+ 		test-maxdelayeddim \
+ 		test-solve \
+ 		test-fgesv             \
+-		test-simd \
+ 		test-fgemv \
+ 		test-nullspace \
+ 		regression-check
+-- 
+2.49.0
+

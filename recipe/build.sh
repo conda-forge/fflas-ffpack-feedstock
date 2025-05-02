@@ -43,9 +43,6 @@ make -j${CPU_COUNT}
 make install
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
-if [[ "$PKG_VERSION" == "2.4.3" && "$target_platform" == "osx-64" ]]; then
-    make check -j${CPU_COUNT} || cat tests/test-suite.log
-else
-    make check -j${CPU_COUNT} || (cat tests/test-suite.log && exit 1)
-fi
+    # Provide information requested by https://github.com/linbox-team/fflas-ffpack/issues/408#issuecomment-2770670149
+    make check -j${CPU_COUNT} || (cat tests/test-suite.log && ldd tests/test-echelon && exit 1)
 fi

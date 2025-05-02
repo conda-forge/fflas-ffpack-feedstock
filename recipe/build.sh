@@ -22,22 +22,9 @@ chmod +x configure
     --libdir="$PREFIX/lib" \
     --with-default="$PREFIX" \
     --with-blas-libs="-llapack -lcblas -lblas" \
-    --enable-optimization \
     --enable-precompilation \
     --disable-openmp \
-    --enable-sse \
-    --enable-sse2 \
-    --disable-sse3 \
-    --disable-ssse3 \
-    --disable-sse41 \
-    --disable-sse42 \
-    --disable-avx \
-    --disable-avx2 \
-    --disable-fma \
-    --disable-fma4 \
-    --disable-avx512f \
-    --disable-avx512dq \
-    --disable-avx512vl || (cat config.log; false)
+    --without-archnative || (cat config.log; false)
 
 make -j${CPU_COUNT}
 make install

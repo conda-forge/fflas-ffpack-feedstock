@@ -18,13 +18,13 @@ givaro:
 - 4.2.1
 gmp:
 - '6'
-libblas:
-- 3.9.* *netlib
 libcblas:
 - 3.9.* *netlib
 liblapack:
 - 3.9.* *netlib
 macos_machine:
 - arm64-apple-darwin20.0.0
+openblas:
+- 0.3.*
 target_platform:
 - osx-arm64

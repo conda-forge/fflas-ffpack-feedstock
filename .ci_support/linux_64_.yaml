@@ -18,11 +18,11 @@ givaro:
 - 4.2.1
 gmp:
 - '6'
-libblas:
-- 3.9.* *netlib
 libcblas:
 - 3.9.* *netlib
 liblapack:
 - 3.9.* *netlib
+openblas:
+- 0.3.*
 target_platform:
 - linux-64

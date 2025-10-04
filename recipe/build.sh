@@ -30,15 +30,15 @@ chmod +x configure
     --prefix="$PREFIX" \
     --libdir="$PREFIX/lib" \
     --with-default="$PREFIX" \
-    --with-blas-libs="-lm" \
+    --with-blas-libs="${BLAS_LIBS}" \
     --enable-precompilation \
     --disable-openmp \
     --without-archnative || (cat config.log; false)
 
-make -j${CPU_COUNT} LIBS=${BLAS_LIBS} BLAS_LIBS=${BLAS_LIBS}
-make install LIBS=${BLAS_LIBS} BLAS_LIBS=${BLAS_LIBS}
+make -j${CPU_COUNT} LIBS="${BLAS_LIBS}" BLAS_LIBS="${BLAS_LIBS}"
+make install LIBS="${BLAS_LIBS}" BLAS_LIBS="${BLAS_LIBS}"
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
     # Provide information requested by https://github.com/linbox-team/fflas-ffpack/issues/408#issuecomment-2770670149
-    make check -j${CPU_COUNT} LIBS=${BLAS_LIBS} BLAS_LIBS=${BLAS_LIBS} || (cat tests/test-suite.log && ldd tests/test-echelon && exit 1)
+    make check -j${CPU_COUNT} LIBS="${BLAS_LIBS}" BLAS_LIBS="${BLAS_LIBS}" || (cat tests/test-suite.log && ldd tests/test-echelon && exit 1)
 fi

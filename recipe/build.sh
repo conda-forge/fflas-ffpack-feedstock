@@ -18,7 +18,7 @@ fi
 # If linked dynamically, it will make openblas single threaded for the entire
 # process since fflas uses openblas_set_num_threads(1)
 if [[ "$target_platform" == "linux-"* ]]; then
-    BLAS_LIBS="-Wl,${PREFIX}/lib/libopenblas.a -Wl,--exclude-libs,libopenblas.a -lgfortran"
+    BLAS_LIBS="-Wl,${PREFIX}/lib/libopenblas.a -Wl,--exclude-libs,libopenblas.a -lgfortran -lpthread"
 elif [[ "$target_platform" == "osx-"* ]]; then
     BLAS_LIBS="-L${PREFIX}/lib -Wl,-hidden-lopenblas -lgfortran"
 fi
@@ -30,15 +30,15 @@ chmod +x configure
     --prefix="$PREFIX" \
     --libdir="$PREFIX/lib" \
     --with-default="$PREFIX" \
-    --with-blas-libs="${BLAS_LIBS}" \
+    --with-blas-libs="-lm" \
     --enable-precompilation \
     --disable-openmp \
     --without-archnative || (cat config.log; false)
 
-make -j${CPU_COUNT}
-make install
+make -j${CPU_COUNT} LIBS=${BLAS_LIBS} BLAS_LIBS=${BLAS_LIBS}
+make install LIBS=${BLAS_LIBS} BLAS_LIBS=${BLAS_LIBS}
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
     # Provide information requested by https://github.com/linbox-team/fflas-ffpack/issues/408#issuecomment-2770670149
-    make check -j${CPU_COUNT} || (cat tests/test-suite.log && ldd tests/test-echelon && exit 1)
+    make check -j${CPU_COUNT} LIBS=${BLAS_LIBS} BLAS_LIBS=${BLAS_LIBS} || (cat tests/test-suite.log && ldd tests/test-echelon && exit 1)
 fi

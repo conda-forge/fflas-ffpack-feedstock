@@ -35,10 +35,6 @@ requirements:
     - liblapack 3.9.* *openblas
     - givaro
     - gmp
-  run:
-    # tests are failing without openblas https://github.com/conda-forge/fflas-ffpack-feedstock/pull/21#issuecomment-3287878626
-    - libblas * *openblas
-    - openblas
 
 test:
   commands:

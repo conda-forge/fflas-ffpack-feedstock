@@ -14,6 +14,15 @@ elif [[ "$cxx_compiler" == "gxx" ]]; then
     export CCNAM=gcc
 fi
 
+# Statically link in openblas since fflas-ffpack require a single threaded blas.
+# If linked dynamically, it will make openblas single threaded for the entire
+# process since fflas uses openblas_set_num_threads(1)
+if [[ "$target_platform" == "linux-"* ]]; then
+    BLAS_LIBS="-L${PREFIX}/lib -Wl,--exclude-libs,libopenblas.a -lgfortran"
+elif [[ "$target_platform" == "osx-"* ]]; then
+    BLAS_LIBS="-L${PREFIX}/lib -hidden-lopenblas -lgfortran"
+fi
+
 chmod +x configure
 # Enable only SSE/SSE2 as these are supported on all 64bit CPUs
 # https://unix.stackexchange.com/a/249384
@@ -21,7 +30,7 @@ chmod +x configure
     --prefix="$PREFIX" \
     --libdir="$PREFIX/lib" \
     --with-default="$PREFIX" \
-    --with-blas-libs="-llapack -lcblas -lblas" \
+    --with-blas-libs="${BLAS_LIBS}" \
     --enable-precompilation \
     --disable-openmp \
     --without-archnative || (cat config.log; false)

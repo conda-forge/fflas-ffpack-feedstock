@@ -18,7 +18,7 @@ fi
 # If linked dynamically, it will make openblas single threaded for the entire
 # process since fflas uses openblas_set_num_threads(1)
 if [[ "$target_platform" == "linux-"* ]]; then
-    BLAS_LIBS="-L${PREFIX}/lib -Wl,--exclude-libs,libopenblas.a -lgfortran"
+    BLAS_LIBS="${PREFIX}/lib/libopenblas.a -Wl,--exclude-libs,libopenblas.a -lgfortran"
 elif [[ "$target_platform" == "osx-"* ]]; then
     BLAS_LIBS="-L${PREFIX}/lib -Wl,-hidden-lopenblas -lgfortran"
 fi

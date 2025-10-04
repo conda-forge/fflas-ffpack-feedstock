@@ -21,6 +21,7 @@ if [[ "$target_platform" == "linux-"* ]]; then
     BLAS_LIBS="-Wl,${PREFIX}/lib/libopenblas.a -Wl,--exclude-libs,libopenblas.a -lgfortran -lpthread"
 elif [[ "$target_platform" == "osx-"* ]]; then
     BLAS_LIBS="-L${PREFIX}/lib -Wl,-hidden-lopenblas -lgfortran"
+    rm ${PREFIX}/lib/libopenblas.dylib
 fi
 
 chmod +x configure

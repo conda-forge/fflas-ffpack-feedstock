@@ -29,6 +29,7 @@ requirements:
     - autoconf
     - make
   host:
+    - blas-devel 3.9.* *openblas
     - libblas 3.9.* *openblas
     - libcblas 3.9.* *openblas
     - liblapack 3.9.* *openblas

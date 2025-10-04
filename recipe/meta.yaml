@@ -29,7 +29,7 @@ requirements:
     - autoconf
     - make
   host:
-    - openblas
+    - libblas * *openblas
     - libcblas
     - liblapack
     - givaro

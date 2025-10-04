@@ -28,8 +28,10 @@ requirements:
     - automake
     - autoconf
     - make
+    - sed
   host:
     - blas-devel 3.9.* *openblas
+    - libopenblas * pthreads*
     - givaro
     - gmp
 

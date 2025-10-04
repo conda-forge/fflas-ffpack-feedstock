@@ -20,7 +20,7 @@ fi
 if [[ "$target_platform" == "linux-"* ]]; then
     BLAS_LIBS="-Wl,${PREFIX}/lib/libopenblas.a -Wl,--exclude-libs,libopenblas.a -lgfortran -lpthread"
 elif [[ "$target_platform" == "osx-"* ]]; then
-    BLAS_LIBS="-L${PREFIX}/lib -Wl,-hidden-lopenblas -lgfortran"
+    BLAS_LIBS="-L${PREFIX}/lib -Wl,-hidden-lopenblas -lgfortran -lpthread"
     rm ${PREFIX}/lib/libopenblas.dylib
 fi
 
@@ -43,3 +43,6 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
     # Provide information requested by https://github.com/linbox-team/fflas-ffpack/issues/408#issuecomment-2770670149
     make check -j${CPU_COUNT} LIBS="${BLAS_LIBS}" BLAS_LIBS="${BLAS_LIBS}" || (cat tests/test-suite.log && ldd tests/test-echelon && exit 1)
 fi
+
+sed -i "s@${BLAS_LIBS}@@g" ${PREFIX}/bin/fflas-ffpack-config
+sed -i "s@${BLAS_LIBS}@@g" ${PREFIX}/lib/pkgconfig/fflas-ffpack.pc

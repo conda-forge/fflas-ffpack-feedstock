@@ -29,9 +29,9 @@ requirements:
     - autoconf
     - make
   host:
-    - libblas * *openblas
-    - libcblas
-    - liblapack
+    - libblas 3.9.* *openblas
+    - libcblas 3.9.* *openblas
+    - liblapack 3.9.* *openblas
     - givaro
     - gmp
   run:
